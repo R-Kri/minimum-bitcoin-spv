@@ -2,6 +2,7 @@ import { doubleSha256, reverseBuffer } from "./crypto/hash";
 import { parseBlockHeader } from "./block/header";
 import { bitsToTarget, hashToBigInt } from "./block/difficulty";
 import { validateChain } from "./block/chain";
+import { buildMessage } from "./network/message";
 
 const headerHex =
 "01000000" +
@@ -12,13 +13,19 @@ const headerHex =
 "1dac2b7c";
 
 const headerBuffer = Buffer.from(headerHex, "hex");
+const payload = Buffer.alloc(0); // empty for now
+
 
 const header = parseBlockHeader(headerBuffer);
+const message = buildMessage("verack", payload);
+
 
 console.log("Version:", header.version);
 console.log("Timestamp:", header.timestamp);
 console.log("Bits:", header.bits.toString(16));
 console.log("Nonce:", header.nonce);
+console.log("Raw message hex:");
+console.log(message.toString("hex"));
 
 // hashing the header
 const hash = doubleSha256(headerBuffer);
