@@ -1,5 +1,3 @@
-// client.ts
-
 import net from "net";
 import { buildMessage } from "./message";
 import { validateHeader } from "../block/chain";

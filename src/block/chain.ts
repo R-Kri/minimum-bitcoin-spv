@@ -37,5 +37,5 @@ export function validateChain(headerBuffers: Buffer[]): void {
         previousHash = hashHex;
     }
 
-    console.log("Chain VALID ");
+    console.log("Chain VALID ✅");
 }
