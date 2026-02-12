@@ -1,6 +1,7 @@
 import { doubleSha256, reverseBuffer } from "./crypto/hash";
 import { parseBlockHeader } from "./block/header";
 import { bitsToTarget, hashToBigInt } from "./block/difficulty";
+import { validateChain } from "./block/chain";
 
 const headerHex =
 "01000000" +
@@ -37,7 +38,7 @@ console.log("Hash (hex):", hashBigInt.toString(16));
 
 // Validate Proof-of-Work
 if (hashBigInt <= target) {
-    console.log("Proof-of-Work VALID ✅");
+    console.log("Proof-of-Work VALID");
 } else {
-    console.log("Proof-of-Work INVALID ❌");
+    console.log("Proof-of-Work INVALID");
 }
